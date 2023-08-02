@@ -1,0 +1,28 @@
+
+#include<bits/stdc++.h>
+using namespace std;
+vector<int> jobScheduling(vector<vector<int>> &jobs)
+{
+// 👉 lamda expression 
+    sort(jobs.begin(),jobs.end(), [](const std::vector<int>& a, const std::vector<int>& b) {
+  return a[2] > b[2];
+});
+
+    int n=jobs.size();
+    int sum=0;
+    int cnt=0;
+    vector<int>mark(n+1,-1);
+     for(int i=0;i<n;i++){
+        int n1=jobs[i][1];
+    for(int j=n1;j>=1;j--){
+        if(mark[j]==-1){
+            mark[j]=jobs[i][0];
+            cnt++;
+            sum+=jobs[i][2];
+          break;
+        }
+    }
+    }
+   return {cnt,sum};
+
+}
