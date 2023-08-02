@@ -1,0 +1,25 @@
+#include <bits/stdc++.h> 
+bool cmp(const pair<int,int>&a,pair<int,int>&b){
+    double a1=a.second*1.0/a.first*1.0;
+    double b1=b.second*1.0/b.first*1.0;
+
+    return a1>b1;
+}
+double maximumValue (vector<pair<int, int>>& items, int n, int w)
+{
+    // Write your code here.
+    // ITEMS contains {weight, value} pairs.
+    sort(items.begin(),items.end(),cmp);
+    double gain=0.0;
+
+    for(int i=0;i<n;i++){
+        if(items[i].first<=w){
+            gain+=items[i].second*1.0;
+            w-=items[i].first;
+        }else{
+            gain+=(items[i].second*1.0/items[i].first*1.0)*w;
+            break;
+        }
+    }
+    return gain;
+}
